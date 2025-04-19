@@ -1,28 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Saudável de Verdade - Em breve</title>
-  <style>
-    body {
-      background: #fefbf6;
-      font-family: sans-serif;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #3b7f4c;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Saudável de Verdade - Em breve</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="three.js"></script>
+    <script src="vanta.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>🍊 Saudável de Verdade 🍞</h1>
-  <p>Estamos preparando uma seleção de produtos 100% livres de ultraprocessados.</p>
-  <p>Em breve, sua alimentação saudável com curadoria de verdade estará aqui!</p>
-  <!--<p>Siga nosso Instagram: @saudaveldeverdade</p>-->
+
+<div class="section">
+    <div class="section-left">
+        <div class="header-content">
+            <h1 class="store-name">Saudavel de Verdade</h1>
+            <p>Estamos preparando uma seleção de produtos livres de ultraprocessamento.</p>
+            <p>Em breve, sua alimentação saudável com curadoria de verdade estará aqui!</p>
+        </div>
+        <div class="main-content">
+            <p>
+                Deixe seu e-mail e seja avisado em primeira mão quando a nossa loja entrar no ar.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p class="highlight">
+                🍞🌱 Produtos não ultraprocessados, com curadoria de verdade!
+            </p>
+        </div>
+    </div>
+    <div class="section-right">
+        <form id="my-form" action="https://formspree.io/f/mjkylrqz" method="POST">
+            <label for="customer_name">Nome</label>
+            <input id="customer_name" type="text" name="name" required />
+
+            <label for="customer_email">Email</label>
+            <input id="customer_email" type="email" name="email" required />
+
+            <button id="my-form-button">Quero ser avisado</button>
+            <p id="my-form-status"></p>
+        </form>
+        <section class="social">
+            <h2>Nos acompanhe também nas redes sociais 🌱</h2>
+            <p>Siga-nos para novidades, bastidores, informações e lançamentos!</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="icon icon-instagram"></i></a>
+                <a href="#" target="_blank"><i class="icon icon-facebook"></i></a>
+                <a href="#" target="_blank"><i class="icon icon-linkedin"></i></a>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- Place this script at the end of the body tag -->
+<script>
+    var form = document.getElementById("my-form");
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                status.innerHTML = "Obrigado pelo contato!";
+                form.reset()
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                    } else {
+                        status.innerHTML = "Oops! Houve um problema ao enviar o formulário"
+                    }
+                })
+            }
+        }).catch(error => {
+            status.innerHTML = "Oops! Houve um problema ao enviar o formulário"
+        });
+    }
+    form.addEventListener("submit", handleSubmit)
+</script>
+<script>
+    VANTA.BIRDS({
+        el: ".section-right",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 300.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0xFAFAFA,
+        color1: 0x4FC3F7,
+        color2: 0xFB8C00,
+        colorMode: "lerpGradient",
+        wingSpan: 23.00,
+        alignment: 11.00,
+        cohesion: 25.00,
+        quantity: 3.00,
+        separation: 50.00
+    })
+</script>
+
+
 </body>
 </html>
