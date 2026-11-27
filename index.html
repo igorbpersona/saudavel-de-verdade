@@ -10,7 +10,9 @@
         :root{
             --img-size: clamp(280px, 60vmin, 640px); /* responsive image size */
             --text-color: #5f2202;
-            --bg: #EBF5CB;
+            --bg: #ebf5cb;
+            --link-color: #344e15;
+            --link-hover-color: #546e35;
             --font: 'Quicksand', sans-serif;
         }
 
@@ -51,9 +53,31 @@
         }
 
         .coming{
-            font-size:1.2rem;
+            font-size:34px;
             opacity:0.9;
-            letter-spacing:0.03em;
+        }
+        .icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+        }
+        .contact {
+            margin-top: 100px;
+            padding: 0;
+        }
+        .contact li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        a {
+            font-size: 18px;
+            color:var(--link-color);
+        }
+
+        a:hover {
+            color:var(--link-hover-color);
         }
     </style>
 </head>
@@ -69,6 +93,24 @@
     </picture>
 
     <div id="comingText" class="coming">Em breve...</div>
+
+    <div class="contact-wrapper">
+        <ul class="contact">
+            <li>
+                <img src="images/icons/instagram-couve.svg" alt="Instagram" class="icon" />
+                <a href="https://www.instagram.com/armazem.saudaveldeverdade/" target="_blank" rel="noopener noreferrer">@armazem.saudaveldeverdade</a>
+            </li>
+            <li>
+                <img src="images/icons/facebook-couve.svg" alt="Facebook" class="icon" />
+                <a href="https://www.facebook.com/armazem.saudaveldeverdade" target="_blank" rel="noopener noreferrer">/armazem.saudaveldeverdade</a>
+            </li>
+            <li>
+                <img src="images/icons/whatsapp-couve.svg" alt="Whatsapp" class="icon" />
+                <a href="https://wa.me/5541988339516" target="_blank" rel="noopener noreferrer">(41)98833-9516</a>
+            </li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
+
